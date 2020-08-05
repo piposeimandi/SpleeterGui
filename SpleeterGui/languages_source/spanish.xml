@@ -2,8 +2,8 @@
 <root>
   <language english="spanish" control="">español</language>
   <!-- menu items -->
-  <menu english="File" control="fileToolStripMenuItem">Expediente</menu>
-  <menu english="Exit" control="exitToolStripMenuItem">Salida</menu>
+  <menu english="File" control="fileToolStripMenuItem">Archivo</menu>
+  <menu english="Exit" control="exitToolStripMenuItem">Salir</menu>
   <menu english="Help" control="helpToolStripMenuItem">Ayuda</menu>
   <menu english="Help &amp; FAQ" control="helpFAQToolStripMenuItem">Ayuda &amp; pregunta</menu>
   <menu english="Check spleeterGUI version" control="checkSpleeterGUIUpdateToolStripMenuItem">Comprueba la versión de spleeterGUI</menu>
@@ -18,10 +18,10 @@
   <item english="Music source separation" control="lblSlogan1">Separación de fuente de música</item>
   <item english="Windows desktop bundle" control="lblSlogan2">Paquete de escritorio de Windows</item>
   <item english="Parts to separate" control="lblPartsTitle">Partes para separar</item>
-  <item english="2" control="parts_btn2">dos</item>
+  <item english="2" control="parts_btn2">2</item>
   <item english="Vocal + Accompaniment" control="parts_label">Voz + acompañamiento</item>
-  <item english="4" control="parts_btn4">cuatro</item>
-  <item english="5" control="parts_btn5">cinco</item>
+  <item english="4" control="parts_btn4">4</item>
+  <item english="5" control="parts_btn5">5</item>
   <item english="Recombine (Merge output parts back together)" control="chkRecombine">Recombine (Fusionar piezas de salida juntas)</item>
   <item english="Vocal" control="chkRPartVocal">Vocal</item>
   <item english="Bass" control="chkRPartBass">Bajo</item>
@@ -37,16 +37,16 @@
   <item english="seconds" control="lblSeconds">segundos</item>
 
   <!-- program texts -->
-  <lang english="Showing spleeter version" control="LoadStuff_textBox1">Mostrando la versión esplendorosa</lang>
+  <lang english="Showing spleeter version" control="LoadStuff_textBox1">Mostrando la versión de Spleeter</lang>
   <lang english="Please select an output directory" control="Form1_DragDrop_msgbox">Por favor seleccione un directorio de salida</lang>
   <lang english="Starting" control="starting">Comenzando</lang>
   <lang english="Starting processing of all songs" control="starting_all">Iniciando el procesamiento de todas las canciones</lang>
   <lang english="songs remaining" control="songs_remaining">canciones restantes</lang>
   <lang english="Working" control="working">Trabajando</lang>
   <lang english="Processing" control="processing">Procesando</lang>
-  <lang english="idle" control="idle">ociosa</lang>
+  <lang english="idle" control="idle">parado</lang>
   <lang english="Finished processing all songs" control="finished">Terminado de procesar todas las canciones.</lang>
-  <lang english="Run complete" control="run_complete">Ejecutar completa</lang>
+  <lang english="Run complete" control="run_complete">Proceso terminado</lang>
   <lang english="Vocal + Accompaniment" control="vocal_accompaniment">Voz + acompañamiento</lang>
   <lang english="Vocal + Bass + Drums + Other" control="vocal_bass_drums_other">Vocal + Bajo + Batería + Otra</lang>
   <lang english="Vocal + Bass + Drums + Piano + Other" control="vocal_bass_drums_piano_other">Vocal + Bajo + Batería + Piano + Otra</lang>
