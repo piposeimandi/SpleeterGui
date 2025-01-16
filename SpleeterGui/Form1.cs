@@ -17,9 +17,6 @@ using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Xml;
 
-// 2019 Maken it so.
-// https://www.youtube.com/c/makenitso
-
 namespace SpleeterGui
 {
     public partial class Form1 : Form
@@ -28,7 +25,7 @@ namespace SpleeterGui
         private string mask_extension = "average";
         private string storage = "";
 
-        private string path_python = "";
+        private string path_python = "";    //needs to be the SpleeterGUI folder, not python
         
         private string current_songname = "";
         private int files_remain = 0;
@@ -58,18 +55,31 @@ namespace SpleeterGui
         {
             //program startup - initialise things
             txt_output_directory.Text = Properties.Settings.Default.output_location;
-            storage = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\SpleeterGUI";
-            gui_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            String version = Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
-            this.Text = "SpleeterGUI " + version;
 
-            path_python = Properties.Settings.Default.path_python;
-            
-
-            if (path_python == "")
+            string path = Directory.GetCurrentDirectory();
+            path_python = path.ToString() + @"\python";
+            storage = path.ToString();
+            /*
+            if (Properties.Settings.Default.path_python == "")
             {
-                path_python = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\SpleeterGUI\python";
+                
+                //path_python = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\SpleeterGUI\python";
+                //storage = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\SpleeterGUI";
+                
             }
+            else
+            {
+                path_python = Properties.Settings.Default.path_python + @"\python";
+                storage = Properties.Settings.Default.path_python;
+            }
+            */
+            
+            gui_version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //String version = Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() + "." + Assembly.GetExecutingAssembly().GetName().Version.MinorRevision.ToString();
+            this.Text = "SpleeterGUI " + gui_version;
+
+            
+           
 
             duration.Value = Properties.Settings.Default.duration;
 
@@ -79,8 +89,34 @@ namespace SpleeterGui
 
             string txt = langStr["LoadStuff_textBox1"];
             txt = txt.Replace("[NL]", "\r\n");
-            textBox1.Text = txt + "...\r\n";
-            run_cmd("pip show spleeter");
+
+            // textBox1.Text = txt + "...\r\n";
+            //run_cmd("pip show spleeter"); // 7/10/2023 no pip now
+            string spleet = "";
+            if (Directory.Exists(path_python))
+            {
+                string[] dirs = Directory.GetDirectories(path_python, "spleeter-*", SearchOption.TopDirectoryOnly);
+                foreach (string dir in dirs)
+                {
+                    spleet = dir;
+                    spleet = spleet.Replace(path_python + "\\", "");
+                    spleet = spleet.Replace(".dist-info", "");
+                    textBox1.Text = txt + " [" + spleet + "]\r\n";
+                }
+            }
+            else
+            {
+                //dev mode
+                string[] dirs = Directory.GetDirectories("C:\\temp\\spleeter_target\\SpleeterGUI_core", "spleeter-*", SearchOption.TopDirectoryOnly);
+                
+                foreach (string dir in dirs)
+                {
+                    spleet = dir;
+                    spleet = spleet.Replace("C:\\temp\\spleeter_target\\SpleeterGUI_core\\", "");
+                    spleet = spleet.Replace(".dist-info", "");
+                    textBox1.Text = txt + " [" + spleet + "]\r\n";
+                }
+            }
         }
 
         void get_languages()
@@ -224,7 +260,8 @@ namespace SpleeterGui
                 textBox1.AppendText(langStr["processing"] + " " + filename + "\r\n");
                 progress_txt.Text = langStr["working"] + "..." + files_remain + " "+ langStr["songs_remaining"];
 
-                ProcessStartInfo processStartInfo = new ProcessStartInfo(pyPath, @" -W ignore -m spleeter separate -i " + (char)34 + filename + (char)34 + " -o " + (char)34 + txt_output_directory.Text + (char)34 + " -d "+ (duration.Value).ToString()  + " -p " + (char)34 + storage + @"\config.json" + (char)34);
+                ProcessStartInfo processStartInfo = new ProcessStartInfo(pyPath, @" -W ignore -m spleeter separate  -o " + (char)34 + txt_output_directory.Text + (char)34 + " -d " + (duration.Value).ToString() + " -p " + (char)34 + storage + @"\config.json" + (char)34 + " " + (char)34 + filename + (char)34);
+
                 processStartInfo.WorkingDirectory = storage;
 
                 processStartInfo.UseShellExecute = false;
@@ -440,7 +477,7 @@ namespace SpleeterGui
         {
             //prompt user for python path
             var folderBrowserDialog1 = new FolderBrowserDialog();
-            folderBrowserDialog1.SelectedPath = path_python;
+            folderBrowserDialog1.SelectedPath = storage;
             folderBrowserDialog1.Description = langStr["set_python_path"];
             folderBrowserDialog1.ShowNewFolderButton = false;
             DialogResult result = folderBrowserDialog1.ShowDialog();

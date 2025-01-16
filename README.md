@@ -1,10 +1,9 @@
 ## SpleeterGUI - Music source separation desktop app  
-Windows desktop front end for Spleeter - AI source separation  
+Windows Desktop Front end for Spleeter - AI source separation  
    
-
-Latest installer can be downloaded from here https://makenweb.com/#spleetergui  
+Latest package can be downloaded from here <A href="https://spleetergui.com">https://spleetergui.com</a>
 No need to install python or spleeter, this app contains a portable version of python pre-loaded with spleeter.  
-
+Older versions here https://makenweb.com/#spleetergui  
 The aim for this project is to make it easy for Windows users to download and run Spleeter without needing to use the command line tools to do so.  
 
 ![SpleeterGUI_app](/Spleeter_GUI.png)  
@@ -19,6 +18,10 @@ Please consider donating and help pay for hosting and development paypal.me/make
 
 | Date | Version | Notes |
 | ----: |:-------:| ----- |
+| 7/10/2023 | 2.9.5 | Rebuilt with python 3.10.10 and spleeter 2.4. Updated GUI. New website spleetergui.com |
+| 5/04/2022 | 2.9.2 | Upgraded spleeter to 2.3.0.   Updated python files, the spleeter core update feature is working again. |
+| 30/01/2021 | 2.9.1 | Upgraded spleeter to 2.1.2.   Updated command syntax for latest Spleeter version. |
+| 9/11/2020 | 2.9 | Upgraded spleeter to 2.0.1 and python.  |
 | 31/07/2020 | 2.8 | Upgraded the project to 64bit. |
 | 19/07/2020 | 2.7 | Updated help, set paths for python/ffmpeg (use your own python) |
 | 4/07/2020 | 2.6 | Recombine audio and multi-lingual update. |
@@ -31,9 +34,8 @@ Please consider donating and help pay for hosting and development paypal.me/make
   
 
 ## Older versions  
-Version 2.0 https://drive.google.com/open?id=1O6q68IPwPtAgdpK5ZSKiY5-Ew-jmUv9Y  
-Version 1.1 https://drive.google.com/open?id=1PlZKGzs0K7da5Rq036qChdz3-_Fc9bpq  
-extract it, and run SpleeterGui.exe  
+Version 2.8 https://makenweb.com/downloads/SpleeterGUI_V2.8.msi  
+Version 2.7 https://makenweb.com/downloads/SpleeterGUI_V2.7.msi  
 
 ## Examples
 https://www.youtube.com/watch?v=bdNzVPLzOLE  
